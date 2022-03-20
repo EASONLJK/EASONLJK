@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lingnan.myschool.mapper.AdminMenuMapper">
+    <select id="findAdminMenuById" parameterType="list" resultType="AdminMenu">
+        select * from admin_menu where id in
+        <foreach collection="mid" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getAllByParentId" resultType="AdminMenu">
+        select * from admin_menu where parent_id = #{pid}
+    </select>
+</mapper>
